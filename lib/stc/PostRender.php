@@ -22,7 +22,7 @@ class PostRender
     printLn('==> Current Post: ' . $file['title'] . '.');
 
     $t = Config::templates()->template($file['template']);
-    $c = new Template(Config::data_folder() . '/');
+    $c = new \Template(Config::data_folder() . '/');
 
     $template->set('content', $c->fetch($file['content']));
     $template->set('post', $file);
@@ -45,7 +45,7 @@ class PostRender
     $post_files = $files->filter_by(array(&$this, 'filter_by_type'));
 
     $t = Config::templates()->templates_path() . '/';
-    $template = new Template($t);
+    $template = new \Template($t);
 
     $writer = new DataWriter();
 
@@ -56,5 +56,3 @@ class PostRender
     printLn('=> End PostRender.');
   }
 }
-
-
