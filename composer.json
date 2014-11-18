@@ -1,6 +1,7 @@
 {
     "name": "diasbruno/stc-posts",
     "description": "stc posts engine.",
+    "license": "MIT",
     "authors": [
         {
             "name": "Bruno Dias",
