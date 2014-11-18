@@ -51,7 +51,7 @@ class PostRender
 
     foreach($post_files as $file) {
       $tmpl = $this->make_data($template, $file);
-      $writer->write($tmpl['slug'], 'index.html', $tmpl);
+      $writer->write($tmpl['slug'], 'index.html', $tmpl['html']);
     }
     printLn('=> End PostRender.');
   }
