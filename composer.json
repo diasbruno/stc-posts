@@ -1,20 +1,22 @@
 {
-    "name": "diasbruno/stc-posts",
-    "description": "stc posts engine.",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Bruno Dias",
-            "email": "dias.h.bruno@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-             "STC\\": "lib/stc"
-        }
-    },
-    "require": {
-        "lsolesen/php-template": "dev-master",
-        "cocur/slugify": "@stable"
+  "name": "diasbruno/stc-posts",
+  "description": "stc posts plugin.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Bruno Dias",
+      "email": "dias.h.bruno@gmail.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "STC\\": "lib/stc"
+    }
+  },
+  "require": {
+    "lsolesen/php-template": "dev-master",
+    "cocur/slugify": "@stable"
+  }
 }
