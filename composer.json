@@ -1,7 +1,6 @@
 {
   "name": "diasbruno/stc-posts",
   "description": "stc posts plugin.",
-  "version": "0.1.0",
   "license": "MIT",
   "type": "library",
   "authors": [
@@ -16,6 +15,6 @@
     }
   },
   "require": {
-    "cocur/slugify": "@stable"
+    "cocur/slugify": "~0.10"
   }
 }
