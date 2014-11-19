@@ -16,7 +16,6 @@
     }
   },
   "require": {
-    "lsolesen/php-template": "dev-master",
     "cocur/slugify": "@stable"
   }
 }
