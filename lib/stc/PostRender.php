@@ -14,7 +14,7 @@ class PostRender
     return $file['type'] == PostRender::TYPE;
   }
 
-  private function make_data($template, $file)
+  private function make_data($file)
   {
     if (!array_key_exists('template', $file)) {
       throw new Exception('x> Current Post: ' . $file['title'] . ' does not have a template.');
@@ -22,16 +22,17 @@ class PostRender
     printLn('==> Current Post: ' . $file['title'] . '.');
 
     $t = Config::templates()->template($file['template']);
-    $c = new \Template(Config::data_folder() . '/');
-
-    $template->set('content', $c->fetch($file['content']));
-    $template->set('post', $file);
+    $c = Config::data_folder() . '/';
 
     $tmpl = $file;
     $slugify = new Slugify();
     $tmpl['slug'] = $slugify->slugify($file['title']);
     printLn('===> Post link: ' . $tmpl['slug']);
-    $tmpl['html'] = $template->fetch($t);
+
+    $tmpl['html'] = view($c . 'templates/' . $t, [
+      'content' => view($c . $file['content']),
+      'post' => $file,
+    ]);
 
     printLn('');
 
@@ -45,12 +46,11 @@ class PostRender
     $post_files = $files->filter_by(array(&$this, 'filter_by_type'));
 
     $t = Config::templates()->templates_path() . '/';
-    $template = new \Template($t);
 
     $writer = new DataWriter();
 
     foreach($post_files as $file) {
-      $tmpl = $this->make_data($template, $file);
+      $tmpl = $this->make_data($file);
       $writer->write($tmpl['slug'], 'index.html', $tmpl['html']);
     }
     printLn('=> End PostRender.');
