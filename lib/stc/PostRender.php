@@ -38,7 +38,7 @@ class PostRender
     printLn('=> Start PostRender.');
     printLn('');
 
-    $post_files = Config::db()->retrive('post_list');
+    $post_files = Config::db()->retrieve('post_list');
 
     $t = Config::templates()->templates_path() . '/';
 
