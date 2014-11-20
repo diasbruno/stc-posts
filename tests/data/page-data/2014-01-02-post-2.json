@@ -1,0 +1,6 @@
+{
+  "type": "post",
+  "title": "Test post 2",
+  "categories": ["cat-a","cat-b"],
+  "content": "posts/test-post-2.md"
+}

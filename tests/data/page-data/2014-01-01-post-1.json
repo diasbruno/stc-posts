@@ -1,0 +1,7 @@
+{
+  "type": "post",
+  "template": "default",
+  "title": "Test post",
+  "categories": ["cat-a","cat-b"],
+  "content": "pages/page-01.phtml"
+}

@@ -16,5 +16,9 @@
   },
   "require": {
     "cocur/slugify": "~0.10"
+  },
+  "require-dev": {
+    "bafs/testify": "dev-master",
+    "diasbruno/stc": "dev-master"
   }
 }
