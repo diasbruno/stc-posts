@@ -8,35 +8,37 @@ class PostRender
 {
   public function __construct() {}
 
+  public function make_slug($str)
+  {
+    return $slugify->slugify($str);
+  }
+
   private function make_data($file)
   {
     if (!array_key_exists('template', $file)) {
       throw new Exception('x> Current Post: ' . $file['title'] . ' does not have a template.');
     }
-    printLn('==> Current Post: ' . $file['title'] . '.');
 
     $t = Config::templates()->template($file['template']);
     $c = Config::data_folder() . '/';
 
     $tmpl = $file;
     $slugify = new Slugify();
-    $tmpl['slug'] = $slugify->slugify($file['title']);
-    printLn('===> Post link: ' . $tmpl['slug']);
+    $tmpl['slug'] = $this->make_slug$file['title']);
 
     $tmpl['html'] = view($c . 'templates/' . $t, [
       'content' => view($c . $file['content']),
       'post' => $file,
     ]);
 
-    printLn('');
+    printLn('==> Current Post: ' . $file['title'] . ': ' . $tmpl['slug']);
 
     return $tmpl;
   }
 
   public function render($files)
   {
-    printLn('=> Start PostRender.');
-    printLn('');
+    printLn('=> PostRender.');
 
     $post_files = Config::db()->retrieve('post_list');
 
@@ -48,6 +50,5 @@ class PostRender
       $tmpl = $this->make_data($file);
       $writer->write($tmpl['slug'], 'index.html', $tmpl['html']);
     }
-    printLn('=> End PostRender.');
   }
 }
