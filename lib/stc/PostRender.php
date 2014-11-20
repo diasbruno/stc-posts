@@ -24,7 +24,7 @@ class PostRender
 
     $tmpl = $file;
     $slugify = new Slugify();
-    $tmpl['slug'] = $this->make_slug$file['title']);
+    $tmpl['slug'] = $this->make_slug($file['title']);
 
     $tmpl['html'] = view($c . 'templates/' . $t, [
       'content' => view($c . $file['content']),
