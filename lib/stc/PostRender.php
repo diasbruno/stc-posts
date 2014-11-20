@@ -6,13 +6,7 @@ use Cocur\Slugify\Slugify;
 
 class PostRender
 {
-  const TYPE = 'post';
   public function __construct() {}
-
-  public function filter_by_type($file)
-  {
-    return $file['type'] == PostRender::TYPE;
-  }
 
   private function make_data($file)
   {
@@ -43,7 +37,8 @@ class PostRender
   {
     printLn('=> Start PostRender.');
     printLn('');
-    $post_files = $files->filter_by(array(&$this, 'filter_by_type'));
+
+    $post_files = Config::db()->retrive('post_list');
 
     $t = Config::templates()->templates_path() . '/';
 

@@ -4,9 +4,16 @@ namespace STC;
 
 class PostComponent
 {
+  const TYPE = 'post';
+
+  public function filter_by_type($file)
+  {
+    return $file['type'] == PostRender::TYPE;
+  }
+
   public function build($files)
   {
-    $posts = $files->get_all();
+    $post_files = $files->filter_by(array(&$this, 'filter_by_type'));
 
     $fixed_posts = [];
     foreach($posts as $post) {
