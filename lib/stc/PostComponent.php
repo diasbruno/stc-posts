@@ -4,20 +4,23 @@ namespace STC;
 
 class PostComponent
 {
-  const TYPE = 'post';
+  public function __construct()
+  {
+    $this->type = 'post';
+  }
 
   public function filter_by_type($file)
   {
-    return $file['type'] == PostRender::TYPE;
+    return array_key_exists('type', $file)
+        && $file['type'] == $this->type;
   }
 
   public function build($files)
   {
-    $post_files = $files->filter_by(array(&$this, 'filter_by_type'));
+    $posts = $files->filter_by(array(&$this, 'filter_by_type'));
 
     $fixed_posts = [];
     foreach($posts as $post) {
-      if ($post['type'] != 'post') continue;
       $fixed_posts[(int)format_date_YYYYMMDD($post['file'])] = $post;
     }
 

@@ -23,7 +23,7 @@ $test_case->test('build component.', function($t)
   $component = new STC\PostComponent();
   $component->build($files);
 
-  $t->assert(count(Config::db()->retrive('post_list')) > 0);
+  $t->assert(count(Config::db()->retrieve('post_list')) > 0);
 });
 
 $test_case();
