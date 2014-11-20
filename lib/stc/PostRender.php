@@ -6,11 +6,16 @@ use Cocur\Slugify\Slugify;
 
 class PostRender
 {
-  public function __construct() {}
+  private $slugify;
+
+  public function __construct()
+  {
+    $this->slugify = new Slugify();
+  }
 
   public function make_slug($str)
   {
-    return $slugify->slugify($str);
+    return $this->slugify->slugify($str);
   }
 
   private function make_data($file)
@@ -23,7 +28,6 @@ class PostRender
     $c = Config::data_folder() . '/';
 
     $tmpl = $file;
-    $slugify = new Slugify();
     $tmpl['slug'] = $this->make_slug($file['title']);
 
     $tmpl['html'] = view($c . 'templates/' . $t, [
