@@ -2,7 +2,7 @@
 
 namespace STC;
 
-class PostComponent
+class PostDatabase
 {
   public function __construct()
   {
@@ -15,7 +15,7 @@ class PostComponent
         && $file['type'] == $this->type;
   }
 
-  public function build($files)
+  public function execute($files)
   {
     $posts = $files->filter_by(array(&$this, 'filter_by_type'));
 
