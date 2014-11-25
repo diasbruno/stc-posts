@@ -51,6 +51,8 @@ class PostWriter
     $render_content_with = Application::renders()->select($content_template);
     $render_with = Application::renders()->select($template_name);
 
+    $tmpl['slug'] = $this->make_slug($file['title']);
+
     $tmpl['html'] = $render_with->render($template_name, [
       'content' => $render_content_with->render($content_template, [
         'post'=> $file,
