@@ -40,9 +40,9 @@ class PostWriter
     return $tmpl;
   }
 
-  public function render($files)
+  public function execute($files)
   {
-    printLn('=> PostRender.');
+    printLn('=> PostWriter.');
 
     $post_files = Application::db()->retrieve('post_list');
 
