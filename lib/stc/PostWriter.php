@@ -4,7 +4,7 @@ namespace STC;
 
 use Cocur\Slugify\Slugify;
 
-class PostRender
+class PostWriter
 {
   private $slugify;
 
