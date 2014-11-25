@@ -25,6 +25,6 @@ class PostComponent
     }
 
     sort($fixed_posts, SORT_NUMERIC);
-    Config::db()->store('post_list', $fixed_posts);
+    Application::db()->store('post_list', $fixed_posts);
   }
 }

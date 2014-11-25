@@ -24,8 +24,8 @@ class PostRender
       throw new Exception('x> Current Post: ' . $file['title'] . ' does not have a template.');
     }
 
-    $t = Config::templates()->template($file['template']);
-    $c = Config::data_folder() . '/';
+    $t = Application::templates()->template($file['template']);
+    $c = Application::data_folder() . '/';
 
     $tmpl = $file;
     $tmpl['slug'] = $this->make_slug($file['title']);
@@ -44,9 +44,9 @@ class PostRender
   {
     printLn('=> PostRender.');
 
-    $post_files = Config::db()->retrieve('post_list');
+    $post_files = Application::db()->retrieve('post_list');
 
-    $t = Config::templates()->templates_path() . '/';
+    $t = Application::templates()->templates_path() . '/';
 
     $writer = new DataWriter();
 
