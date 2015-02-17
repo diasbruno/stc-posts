@@ -24,7 +24,7 @@ class PostDatabase
       $fixed_posts[(int)format_date_YYYYMMDD($post['file'])] = $post;
     }
 
-    sort($fixed_posts, SORT_NUMERIC);
+    krsort($fixed_posts);
     Application::db()->store('post_list', $fixed_posts);
   }
 }
